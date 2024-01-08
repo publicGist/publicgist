@@ -1,0 +1,24 @@
+name: Languages Graph
+
+on:
+    workflow_dispatch:
+    push:
+      branches:
+        - master
+    schedule:
+        # Runs at 12am UTC
+        - cron: '0 0/3 * * *'
+
+jobs:
+    update-readme:
+        name: Update the README
+        runs-on: ubuntu-latest
+        steps:
+        - uses: publicGist/read@main
+          with:
+            LINE_FORMAT: "$NAME   $SIZE $BAR  $PERCENT" 
+            BLOCKS: "⣀⣄⣤⣦⣶⣷⣿" 
+            BAR_WIDTH: 25 
+            SHOW_TOTAL: true 
+            TOP_TOTAL: false 
+            SHOW_TOTAL_SEPARATOR: true 
